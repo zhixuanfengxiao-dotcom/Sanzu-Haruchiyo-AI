@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sanzubot Control Panel</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🌸 Sanzubot (GoatBot Architecture)</h1>
+    <p class="sub">WS3-FCA + C3C FBState + Modular Commands</p>
+
+    <form action="/save-config" method="POST">
+      <div class="form-group">
+        <label>C3C FBState (JSON Array):</label>
+        <textarea name="fbstate" rows="7" placeholder="Paste your C3C FBState JSON array here..." required><%= config.fbstate %></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Gemini API Key:</label>
+        <input type="text" name="geminiApiKey" value="<%= config.geminiApiKey %>" placeholder="AIzaSy..." required />
+      </div>
+
+      <div class="form-group">
+        <label>AI Model Name:</label>
+        <input type="text" name="aiModel" value="<%= config.aiModel || 'gemini-1.5-flash' %>" required />
+      </div>
+
+      <div class="form-group">
+        <label>Bot Prefix:</label>
+        <input type="text" name="prefix" value="<%= config.prefix || '!' %>" required />
+      </div>
+
+      <div class="form-group">
+        <label>Authorized Messenger UID (Optional):</label>
+        <input type="text" name="authorizedUserId" value="<%= config.authorizedUserId %>" placeholder="100012345678901" />
+      </div>
+
+      <button type="submit">Save & Restart Bot</button>
+    </form>
+  </div>
+</body>
+</html>
